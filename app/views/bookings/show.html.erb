@@ -1,0 +1,15 @@
+
+
+<h2>Lecturers</h2>
+
+<%= render "bookings/booking", booking: @booking %>
+
+
+<div>
+  <% if @booking.user == current_user %>
+  <%= link_to "Edit this booking", edit_booking_path(@booking) %> |
+  <%= link_to "Destroy this booking", @booking, data:{turbo_method: :delete, turbo_confirm: "Are you Sure?"} %>
+  <% end %>
+  <%= link_to "Back to Subjects", subjects_path %>
+
+</div>

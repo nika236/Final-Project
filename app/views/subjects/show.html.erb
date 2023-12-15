@@ -1,0 +1,24 @@
+<%= render @subject %>
+
+
+
+
+<h2>Lecturers</h2>
+<ul>
+  <% @subject.lecturers.each do |lecturer| %>
+    <li>
+      <strong><%= lecturer.name %></strong><br>
+      Start Date: <%= lecturer.start_date.strftime('%B %e, %Y %l:%M %p') %><br>
+      End Date: <%= lecturer.end_date.strftime('%B %e, %Y %l:%M %p') %>
+      <% unless current_user.admin? %>
+        <%= link_to 'Take', new_lecturer_booking_path(lecturer), class: 'btn btn-primary' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<% if current_user.admin? %>
+  <%= link_to 'New Lecturer', new_subject_lecturer_path(@subject), class: 'btn btn-primary' %>
+    <%= link_to "Delete Subject", subject_path(@subject), data:{turbo_method: :delete, turbo_confirm: "Are you Sure?" },class: "btn btn-secondary"%>
+<% end %>
+<%= link_to 'Back', :back, class: 'btn btn-primary' %>

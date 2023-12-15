@@ -1,0 +1,22 @@
+<h1>Questionnaires</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <div id="questionnaires">
+        <% @questionnaires.each do |questionnaire| %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <%= render questionnaire %>
+              <p>
+                <%= link_to "Show this questionnaire", questionnaire, class: "btn btn-primary" %>
+              </p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= link_to "New questionnaire", new_questionnaire_path, class: "btn btn-success" %>

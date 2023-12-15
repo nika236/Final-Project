@@ -1,0 +1,33 @@
+<%= form_tag booking_report_reports_path, method: :get do %>
+  <% @filters.each do |filter| %>
+    <%= label_tag filter.to_s.capitalize %>
+    <% if filter.to_sym == :lecturer_id %>
+      <%= select_tag filter, options_from_collection_for_select(Lecturer.all, :id, :name), prompt: 'Select Lecturer' %>
+    <% else %>
+      <%= text_field_tag filter %>
+    <% end %>
+  <% end %>
+
+  <%= submit_tag 'Filter' %>
+<% end %>
+
+<table>
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Lecturer</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @bookings.each do |booking| %>
+    <tr>
+      <td><%= booking.user.username %></td>
+      <td><%= booking.lecturer.name %></td>
+      <td><%= booking.start_date %></td>
+      <td><%= booking.end_date %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,21 @@
+<%= form_with(model: [@subject, @lecturer], local: true) do |form| %>
+  <div class="col-sm-3">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="col-sm-3">
+    <%= form.label :start_date %>
+    <%= form.datetime_field :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="col-sm-3">
+    <%= form.label :end_date %>
+    <%= form.datetime_field :end_date, class: 'form-control' %>
+  </div>
+
+
+  <div class="col-sm-3 mt-2">
+    <%= form.submit 'Save', class: 'btn btn-primary' %>
+  </div>
+<% end %>

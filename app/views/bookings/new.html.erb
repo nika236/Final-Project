@@ -1,0 +1,19 @@
+<h1>New booking</h1>
+
+<ul>
+
+  <strong><%= @lecturer.name %></strong><br>
+  Start Date: <%= @lecturer.start_date.strftime('%B %e, %Y %l:%M %p') %><br>
+  End Date: <%= @lecturer.end_date.strftime('%B %e, %Y %l:%M %p') %>
+</ul>
+<br>
+
+<%= form_with(model: [@lecturer, @booking]) do |form| %>
+  <%= form.hidden_field :start_date %>
+  <%= form.hidden_field :end_date %>
+
+
+  <div class="form-group">
+    <%= form.submit 'Save', class: 'btn btn-primary' %>
+  </div>
+<% end %>
